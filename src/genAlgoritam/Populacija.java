@@ -21,6 +21,35 @@ public class Populacija {
     public   int br_rekomb=0;
     public   int br_mut=0;
 
+    public static double maxFunkcije()
+    {
+        return 0.015*Math.pow(5.79,3)-5*Math.pow(5.79,2)+10*5.79+1500*Math.sin(0.25*5.79);
+    }
+
+    public double srednjaKvadratnaGreska()
+    {
+        double sum=0.0;
+        for(int i=0;i<lista.size();i++)
+        {
+            double k=maxFunkcije();
+            double g=lista.get(i).getVrijednost_funkcije();
+            sum+=Math.pow(maxFunkcije()- lista.get(i).getVrijednost_funkcije(),2) ;
+
+        }
+        return sum/velicina_populacije;
+    }
+
+    public double srednjaVrijednostFitnesFje()
+    {
+        double sum=0.0;
+        for(int i=0;i<lista.size();i++)
+        {
+            sum+=lista.get(i).getFitnesFunkcija();
+
+        }
+        return sum/velicina_populacije;
+    }
+
     public static void izracunavanjeOcjene()
     {
         double sum=0.0;
@@ -137,7 +166,9 @@ public class Populacija {
             l.add(new Jedinka(curr));
         }
         lista=l;
+
         ispis();
+        ponavljanje();
     }
 
     public void ispis()
@@ -187,6 +218,7 @@ public class Populacija {
         }
         System.out.println("=============================================================");
         ispis();
+        ponavljanje();
 
     }
 
@@ -262,6 +294,7 @@ public class Populacija {
         }
 
         ispis();
+
     }
 
     public String replace(String str, int index, char replace){

@@ -25,8 +25,9 @@ public class Main {
             p.mutacija();
             k++;
 
-            System.out.println("================================================\nBroj rekombinacija: " + p.br_rekomb + " Broj mutacija: " + p.br_mut);
-        i++;
+            System.out.println("================================================\nBroj rekombinacija: " + p.br_rekomb + " Broj mutacija: " + p.br_mut+"\nSrednja kvadratna greska generacije: "+p.srednjaKvadratnaGreska()+" Srednja vrijednost fitnes funkcije: "+p.srednjaVrijednostFitnesFje());
+
+            i++;
 
         }
 
